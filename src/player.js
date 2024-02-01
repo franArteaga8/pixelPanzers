@@ -31,7 +31,7 @@ class Tank {
     move(){
         let nextY = this.y + this.speed * this.direction
 
-        if(nextY >= 0 && nextY <= 600 - this.height){
+        if(nextY >= 0 && nextY <= document.getElementById('canvas').offsetHeight - this.height){
           this.y += this.speed * this.direction
           this.sprite.style.top = this.y + 'px'
         }
