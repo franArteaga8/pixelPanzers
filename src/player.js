@@ -1,19 +1,20 @@
 class Tank {
-    constructor (x, y) {
+    constructor (x, y, parent, id) {
         this.width = 100
         this.height = 100
-        this.x = x / 10
-        this.y = (y - this.height) / 2
-        this.parent = canvas
+        this.x = x
+        this.y = y
+        this.parent = parent
         this.speed = 10
         this.direction = 0
         this.sprite
+        this.id = id
 
     }
 
     insertPlayer(){
         let newPlayer = document.createElement('div')
-        newPlayer.setAttribute('id', 'player')
+        newPlayer.setAttribute('id', this.id)
 
         /* this.width = document.getElementById('canvas').offsetWidth 
         this.height = document.getElementById('canvas').offsetHeight */
