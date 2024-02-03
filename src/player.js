@@ -1,10 +1,10 @@
 class Tank {
-    constructor () {
+    constructor (x, y) {
         this.width = 100
         this.height = 100
-        this.x = document.getElementById('canvas').offsetWidth / 10
-        this.y = (document.getElementById('canvas').offsetHeight - this.height) / 2 
-        this.parent = document.getElementById('canvas') 
+        this.x = x / 10
+        this.y = (y - this.height) / 2
+        this.parent = canvas
         this.speed = 10
         this.direction = 0
         this.sprite
@@ -31,7 +31,7 @@ class Tank {
     move(){
         let nextY = this.y + this.speed * this.direction
 
-        if(nextY >= 0 && nextY <= document.getElementById('canvas').offsetHeight - this.height){
+        if(nextY >= 0 && nextY <= canvasHeight - this.height){
           this.y += this.speed * this.direction
           this.sprite.style.top = this.y + 'px'
         }

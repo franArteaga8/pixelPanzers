@@ -1,6 +1,9 @@
 let canvas = document.getElementById('canvas')
 
-let mainTank = new Tank (0, 0, canvas)
+let canvasWidth = canvas.offsetWidth
+let canvasHeight = canvas.offsetHeight
+
+let mainTank = new Tank (canvasWidth, canvasHeight, canvas)
 mainTank.insertPlayer()
 
 
@@ -30,4 +33,5 @@ window.addEventListener('keydown', (e) => {
   function mainTankMovement(){
     mainTank.move()
   }
+  
   
