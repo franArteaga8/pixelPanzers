@@ -24,7 +24,8 @@ class Bullets {
     }
 
     move() {
-
+        this.x += this.speed
+        this.sprite.style.left = this.x + 'px'
     }
 
     despawnBullets () {
