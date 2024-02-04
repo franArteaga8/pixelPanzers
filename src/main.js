@@ -9,7 +9,9 @@ mainTank.insertPlayer()
 let enemyTank = new Tank (canvasWidth - (canvasWidth / 10) - 100, (canvasHeight - 100) / 2, canvas, 'enemy')
 enemyTank.insertPlayer()
 
+let bullets = []
 
+let obstacles = []
 
 window.addEventListener('keydown', (e) => {
     switch(e.key){
@@ -21,6 +23,12 @@ window.addEventListener('keydown', (e) => {
       case 's':
         mainTank.direction = 1
         console.log('s')
+        break
+      case ' ': 
+        let newBullet = new Bullet ((canvasWidth / 10), player.y, canvas, obstacles, bullets)
+        newBullet.spawnBullets()
+        bullets.push(newBullet)
+        newBullet.timerId = setInterval(newBullet.move, 100)
         break
 
     }
