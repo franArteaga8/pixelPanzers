@@ -25,7 +25,7 @@ window.addEventListener('keydown', (e) => {
         console.log('s')
         break
       case ' ': 
-        let newBullet = new Bullet ((canvasWidth / 10), player.y, canvas, obstacles, bullets)
+        let newBullet = new Bullet ((canvasWidth / 10) + mainTank.x, mainTank.y + mainTank.height / 2 - 7.5, canvas, obstacles, bullets)
         newBullet.spawnBullets()
         bullets.push(newBullet)
         newBullet.timerId = setInterval(newBullet.move, 100)

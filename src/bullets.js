@@ -17,7 +17,7 @@ class Bullet {
 
     spawnBullets () {
         let newBullet = document.createElement('div')
-        newBullet.classList.add('bullet')
+        newBullet.classList.add('bullets')
         newBullet.style.top = this.y + 'px'
         newBullet.style.left = this.x + 'px'
         this.parent.appendChild(newBullet)
