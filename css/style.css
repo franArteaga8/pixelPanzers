@@ -23,3 +23,10 @@ body {
     background-color: red;
     position: absolute;
 }
+
+#enemy {
+    width: 100px;
+    height: 100px;
+    background-color: lightgoldenrodyellow;
+    position: absolute;
+}

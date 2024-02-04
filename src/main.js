@@ -6,6 +6,9 @@ let canvasHeight = canvas.offsetHeight
 let mainTank = new Tank (canvasWidth / 10, (canvasHeight - 100) / 2, canvas, 'player')
 mainTank.insertPlayer()
 
+let enemyTank = new Tank (canvasWidth - (canvasWidth / 10) - 100, (canvasHeight - 100) / 2, canvas, 'enemy')
+enemyTank.insertPlayer()
+
 
 
 window.addEventListener('keydown', (e) => {
@@ -35,6 +38,11 @@ window.addEventListener('keydown', (e) => {
 
   function mainTankMovement(){
     mainTank.move()
+   
+  }
+
+  function enemyTankMovement(){
+    enemyTank.move()
    
   }
   
