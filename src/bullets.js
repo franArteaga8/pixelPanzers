@@ -22,7 +22,6 @@ class Bullet {
         newBullet.style.left = this.x + 'px'
         this.parent.appendChild(newBullet)
         this.sprite = newBullet
-
     }
 
     move() {
@@ -30,17 +29,12 @@ class Bullet {
         this.sprite.style.left = this.x + 'px'
         this.checkCollision()
        
-       /*  console.log(this.x)
-        console.log(canvasWidth)
-        console.log(this.bullets) */
     }
 
     despawnBullets () {
         this.parent.removeChild(this.sprite)
         clearInterval(this.timerId)
-        this.bullets = this.bullets.filter(bullet => {
-        return bullet !== this.sprite
-    })
+        this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1)
 
     }
 
@@ -59,13 +53,9 @@ class Bullet {
                 {
                     this.despawnBullets()
                     enemy.despawnPlayer()
-                    this.enemies = this.enemies.filter(enemy => {
-                        return enemy !== enemy.sprite
-                   
-                    })
-                    console.log(enemy.x)
-                    enemy.x = 0
-                    console.log(enemy.x)
+                 
+                    this.enemies = this.enemies.splice(this.enemies.indexOf(enemy.sprite), 1)
+                    
             }
             
         });

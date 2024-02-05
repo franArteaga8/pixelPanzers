@@ -16,14 +16,8 @@ class Tank {
         let newPlayer = document.createElement('div')
         newPlayer.setAttribute('id', this.id)
 
-        /* this.width = document.getElementById('canvas').offsetWidth 
-        this.height = document.getElementById('canvas').offsetHeight */
-
-
-
         newPlayer.style.left = this.x + 'px'
         newPlayer.style.top = this.y + 'px'
-
 
         this.parent.appendChild(newPlayer)
         this.sprite = newPlayer
