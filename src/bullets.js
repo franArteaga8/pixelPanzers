@@ -55,6 +55,7 @@ class Bullet {
                 {
                     this.despawnBullets()
                     enemy.despawnPlayer()
+
                  
                     this.target = this.target.splice(this.target.indexOf(enemy.sprite), 1)
                     

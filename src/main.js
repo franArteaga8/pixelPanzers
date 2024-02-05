@@ -29,10 +29,14 @@ window.addEventListener('keydown', (e) => {
         mainTank.direction = 1
         break
       case ' ': 
+      if (enemyTank.isDead === false)
+      {
         let newBullet = new Bullet (mainTank.x + mainTank.width / 2 , mainTank.y + mainTank.height / 2 - 7.5, canvas, enemies, obstacles, bullets, 1)
         newBullet.spawnBullets()
         bullets.push(newBullet)
         newBullet.timerId = setInterval(newBullet.move, 24)
+      }
+        
         break
 
     }
@@ -46,11 +50,16 @@ window.addEventListener('keydown', (e) => {
 
   let timerId = setInterval(mainTankMovement, 24)
 
+ 
 
   function mainTankMovement(){
     mainTank.move()
+    gameOver()
+   
    
   }
+
+ 
 
 
   let intervalDir = setInterval(() => {
@@ -63,14 +72,26 @@ window.addEventListener('keydown', (e) => {
       newBullet.timerId = setInterval(newBullet.move, 24)
     }
     
+    
   }, 450);
 
 
   function enemyTankMovement(){
     enemyTank.move()
+    gameOver()
   }
 
   let enemyTimerId = setInterval(enemyTankMovement, 24)
+
+
+  function gameOver (){
+    if (mainTank.isDead === true || enemyTank.isDead === true){
+      clearInterval(timerId)
+      clearInterval(intervalDir)
+      clearInterval(enemyTimerId)
+    }
+    
+  }
 
 
   
