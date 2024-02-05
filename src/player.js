@@ -37,6 +37,16 @@ class Tank {
         this.parent.removeChild(this.sprite)
         
     }
+
+
+    enemyDirRNG () {
+        return Math.floor(Math.random() * 3 - 1 )
+    }
+
+    enemyTimerRNG() {
+        return Math.floor(Math.random() * 200 )
+    }
+
     
 }
 

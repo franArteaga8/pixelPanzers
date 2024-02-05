@@ -43,6 +43,9 @@ window.addEventListener('keydown', (e) => {
   })
 
   let timerId = setInterval(mainTankMovement, 24)
+
+
+  
   
 
   function mainTankMovement(){
@@ -51,8 +54,14 @@ window.addEventListener('keydown', (e) => {
   }
 
   function enemyTankMovement(){
+    enemyTank.direction = enemyTank.enemyDirRNG()
     enemyTank.move()
-   
+ 
   }
+
+
+  let enemyTimerId = setInterval(enemyTankMovement, enemyTank.enemyTimerRNG())
+
+
   
   
