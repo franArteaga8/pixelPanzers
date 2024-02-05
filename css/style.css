@@ -15,6 +15,7 @@ body {
     margin: 0 auto;
     background-color: darkslategray;
     position: relative;
+    /* overflow: hidden; */
 }
 
 #player {
@@ -34,6 +35,6 @@ body {
 .bullets {
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: yellowgreen;
     position: absolute;
 }

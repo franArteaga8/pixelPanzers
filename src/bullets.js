@@ -1,9 +1,9 @@
 class Bullet {
-    constructor (x, y, parent, enemies, obstacles, bullets) {
+    constructor (x, y, parent, enemy, obstacles, bullets) {
         this.x = x
         this.y = y
         this.parent = parent
-        this.enemies = enemies
+        this.enemy = enemy
         this.obstacles = obstacles
         this.bullets = bullets
         this.speed = 15
@@ -28,8 +28,13 @@ class Bullet {
     move() {
         this.x += this.speed
         this.sprite.style.left = this.x + 'px'
-        console.log(this.x)
+        if (this.x >= this.parent.offsetWidth + this.width + 30) 
+        {
+            this.despawnBullets()
+        }
+       /*  console.log(this.x)
         console.log(canvasWidth)
+        console.log(this.bullets) */
     }
 
     despawnBullets () {
