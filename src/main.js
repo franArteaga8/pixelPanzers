@@ -55,12 +55,16 @@ window.addEventListener('keydown', (e) => {
 
   let intervalDir = setInterval(() => {
     enemyTank.direction = enemyTank.enemyDirRNG()
-    let newBullet = new Bullet (enemyTank.x , enemyTank.y + mainTank.height / 2 - 7.5, canvas, friends, obstacles, bullets, -1)
-        newBullet.spawnBullets()
-        bullets.push(newBullet)
-        newBullet.timerId = setInterval(newBullet.move, 24)
+    if (enemyTank.direction === 0) {
+
+      let newBullet = new Bullet (enemyTank.x , enemyTank.y + mainTank.height / 2 - 7.5, canvas, friends, obstacles, bullets, -1)
+      newBullet.spawnBullets()
+      bullets.push(newBullet)
+      newBullet.timerId = setInterval(newBullet.move, 24)
+    }
+    
     console.log(enemyTank.direction)
-  }, 300);
+  }, 450);
 
 
   function enemyTankMovement(){

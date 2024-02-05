@@ -7,7 +7,7 @@ class Bullet {
         this.target = target
         this.obstacles = obstacles
         this.bullets = bullets
-        this.speed = 35
+        this.speed = 15
         this.direction = direction
         this.width = 15
         this.height = 15
