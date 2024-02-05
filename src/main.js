@@ -63,7 +63,6 @@ window.addEventListener('keydown', (e) => {
       newBullet.timerId = setInterval(newBullet.move, 24)
     }
     
-    console.log(enemyTank.direction)
   }, 450);
 
 

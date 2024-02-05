@@ -41,7 +41,6 @@ class Bullet {
     }
 
     checkCollision (target) {
-        console.log(this.x)
         if (this.x >= this.parent.offsetWidth + this.width + 30 || this.x <= 0 - 30 ) 
         {
             this.despawnBullets()
