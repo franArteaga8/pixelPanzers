@@ -55,6 +55,7 @@ class Bullet {
             this.y < this.enemy.y + this.enemy.height &&
             (this.y + this.height) > this.enemy.y){
                 this.despawnBullets()
+                this.enemy.despawnPlayer()
             
         }
     }

@@ -12,7 +12,7 @@ class Tank {
 
     }
 
-    insertPlayer(){
+    spawnPlayer(){
         let newPlayer = document.createElement('div')
         newPlayer.setAttribute('id', this.id)
 
@@ -37,6 +37,10 @@ class Tank {
           this.sprite.style.top = this.y + 'px'
         }
 
+    }
+
+    despawnPlayer(){
+        this.parent.removeChild(this.sprite)
     }
     
 }

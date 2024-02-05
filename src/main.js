@@ -8,10 +8,10 @@ let obstacles = []
 
 
 let mainTank = new Tank (canvasWidth / 10, (canvasHeight - 100) / 2, canvas, 'player')
-mainTank.insertPlayer()
+mainTank.spawnPlayer()
 
 let enemyTank = new Tank (canvasWidth - (canvasWidth / 10) - 100, (canvasHeight - 100) / 2, canvas, 'enemy')
-enemyTank.insertPlayer()
+enemyTank.spawnPlayer()
 
 
 
