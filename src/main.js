@@ -4,6 +4,7 @@ let canvasWidth = canvas.offsetWidth
 let canvasHeight = canvas.offsetHeight
 
 let bullets = []
+let enemies = []
 let obstacles = []
 
 
@@ -12,6 +13,8 @@ mainTank.spawnPlayer()
 
 let enemyTank = new Tank (canvasWidth - (canvasWidth / 10) - 100, (canvasHeight - 100) / 2, canvas, 'enemy')
 enemyTank.spawnPlayer()
+enemies.push(enemyTank)
+
 
 
 
@@ -19,17 +22,17 @@ window.addEventListener('keydown', (e) => {
     switch(e.key){
       case 'w':
         mainTank.direction = -1
-        // why not timerId = setInterval here?
+        console.log('w')
         break
       case 's':
         mainTank.direction = 1
+        console.log('s')
         break
       case ' ': 
-        let newBullet = new Bullet (mainTank.x + mainTank.width / 2 , mainTank.y + mainTank.height / 2 - 7.5, canvas, enemyTank
-        , obstacles, bullets)
+        let newBullet = new Bullet (mainTank.x + mainTank.width / 2 , mainTank.y + mainTank.height / 2 - 7.5, canvas, enemies, obstacles, bullets)
         newBullet.spawnBullets()
         bullets.push(newBullet)
-        newBullet.timerId = setInterval(newBullet.move, 100)
+        newBullet.timerId = setInterval(newBullet.move, 24)
         
         break
 

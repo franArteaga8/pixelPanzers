@@ -41,6 +41,7 @@ class Tank {
 
     despawnPlayer(){
         this.parent.removeChild(this.sprite)
+        
     }
     
 }

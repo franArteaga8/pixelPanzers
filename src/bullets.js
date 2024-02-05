@@ -1,12 +1,12 @@
 class Bullet {
-    constructor (x, y, parent, enemy, obstacles, bullets) {
+    constructor (x, y, parent, enemies, obstacles, bullets) {
         this.x = x
         this.y = y
         this.parent = parent
-        this.enemy = enemy
+        this.enemies = enemies
         this.obstacles = obstacles
         this.bullets = bullets
-        this.speed = 15
+        this.speed = 35
         this.width = 15
         this.height = 15
         this.sprite
@@ -49,14 +49,26 @@ class Bullet {
         {
             this.despawnBullets()
         }
+        
+        this.enemies.forEach(enemy => {
 
-        if ( this.x < this.enemy.x + this.enemy.width &&
-            (this.x + this.width) > this.enemy.x &&
-            this.y < this.enemy.y + this.enemy.height &&
-            (this.y + this.height) > this.enemy.y){
-                this.despawnBullets()
-                this.enemy.despawnPlayer()
+            if  (this.x < enemy.x + enemy.width &&
+                (this.x + this.width) > enemy.x &&
+                this.y < enemy.y + enemy.height &&
+                (this.y + this.height) > enemy.y)
+                {
+                    this.despawnBullets()
+                    enemy.despawnPlayer()
+                    this.enemies = this.enemies.filter(enemy => {
+                        return enemy !== enemy.sprite
+                   
+                    })
+                    console.log(enemy.x)
+                    enemy.x = 0
+                    console.log(enemy.x)
+            }
             
-        }
+        });
+     
     }
 }
