@@ -50,3 +50,6 @@ class Tank {
     
 }
 
+
+console.log('i')
+
