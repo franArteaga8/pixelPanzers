@@ -1,12 +1,14 @@
 class Bullet {
-    constructor (x, y, parent, enemies, obstacles, bullets) {
+    constructor (x, y, parent, target, obstacles, bullets, direction) {
         this.x = x
         this.y = y
         this.parent = parent
-        this.enemies = enemies
+        this.friends = friends
+        this.target = target
         this.obstacles = obstacles
         this.bullets = bullets
         this.speed = 35
+        this.direction = direction
         this.width = 15
         this.height = 15
         this.sprite
@@ -25,7 +27,7 @@ class Bullet {
     }
 
     move() {
-        this.x += this.speed
+        this.x += this.speed * this.direction
         this.sprite.style.left = this.x + 'px'
         this.checkCollision()
        
@@ -38,13 +40,14 @@ class Bullet {
 
     }
 
-    checkCollision () {
-        if (this.x >= this.parent.offsetWidth + this.width + 30) 
+    checkCollision (target) {
+        console.log(this.x)
+        if (this.x >= this.parent.offsetWidth + this.width + 30 || this.x <= 0 - 30 ) 
         {
             this.despawnBullets()
         }
         
-        this.enemies.forEach(enemy => {
+        this.target.forEach(enemy => {
 
             if  (this.x < enemy.x + enemy.width &&
                 (this.x + this.width) > enemy.x &&
@@ -54,7 +57,7 @@ class Bullet {
                     this.despawnBullets()
                     enemy.despawnPlayer()
                  
-                    this.enemies = this.enemies.splice(this.enemies.indexOf(enemy.sprite), 1)
+                    this.target = this.target.splice(this.target.indexOf(enemy.sprite), 1)
                     
             }
             
