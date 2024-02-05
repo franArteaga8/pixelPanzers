@@ -9,6 +9,7 @@ class Tank {
         this.direction = 0
         this.sprite
         this.id = id
+        this.isDead = false
 
     }
 
@@ -35,16 +36,14 @@ class Tank {
 
     despawnPlayer(){
         this.parent.removeChild(this.sprite)
+        this.isDead = true
+        clearInterval(intervalDir)
         
     }
 
 
     enemyDirRNG () {
         return Math.floor(Math.random() * 3 - 1 )
-    }
-
-    enemyTimerRNG() {
-        return Math.floor(Math.random() * 200 )
     }
 
     
