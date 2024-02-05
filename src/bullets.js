@@ -28,10 +28,8 @@ class Bullet {
     move() {
         this.x += this.speed
         this.sprite.style.left = this.x + 'px'
-        if (this.x >= this.parent.offsetWidth + this.width + 30) 
-        {
-            this.despawnBullets()
-        }
+        this.checkCollision()
+       
        /*  console.log(this.x)
         console.log(canvasWidth)
         console.log(this.bullets) */
@@ -47,9 +45,17 @@ class Bullet {
     }
 
     checkCollision () {
-        if (this.x > this.parent.style.width)
+        if (this.x >= this.parent.offsetWidth + this.width + 30) 
         {
             this.despawnBullets()
+        }
+
+        if ( this.x < this.enemy.x + this.enemy.width &&
+            (this.x + this.width) > this.enemy.x &&
+            this.y < this.enemy.y + this.enemy.height &&
+            (this.y + this.height) > this.enemy.y){
+                this.despawnBullets()
+            
         }
     }
 }
