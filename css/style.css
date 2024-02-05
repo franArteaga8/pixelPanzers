@@ -82,9 +82,14 @@ body {
     font-size: x-large;
     font-weight: 900;
 }
+
 #startButton:hover {
     color:rgb(207, 157, 92);
     box-shadow: 4px 4px 4px black;
     background-color: #093d09;
     border-color: rgb(207, 157, 92);
+}
+
+.hidden {
+    visibility: hidden;
 }

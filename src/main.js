@@ -1,4 +1,6 @@
 let canvas = document.getElementById('canvas')
+let startButton = document.getElementById('startButton')
+let startDiv = document.getElementById('startDiv')
 
 let canvasWidth = canvas.offsetWidth
 let canvasHeight = canvas.offsetHeight
@@ -17,8 +19,11 @@ let enemyTank = new Tank (canvasWidth - (canvasWidth / 10) - 100, (canvasHeight 
 enemyTank.spawnPlayer()
 enemies.push(enemyTank)
 
+startButton.addEventListener('click', startGame)
 
 
+function startGame() {
+startDiv.classList.add('hidden')
 
 window.addEventListener('keydown', (e) => {
     switch(e.key){
@@ -92,6 +97,7 @@ window.addEventListener('keydown', (e) => {
     }
     
   }
+}
 
 
   
