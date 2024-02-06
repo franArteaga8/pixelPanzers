@@ -6,6 +6,10 @@ body {
     align-items: center;
     background-color: black;
     overflow: hidden;
+    background-image: url('../assets/images/Background/FondoStart.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
     
 
@@ -15,26 +19,115 @@ body {
     margin: 0 auto;
     background-color: darkslategray;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
+    background-image: url('../assets/images/Background/fondocampoBatalla.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #player {
     width: 100px;
     height: 100px;
-    background-color: red;
     position: absolute;
+    background-image: url('../assets/images/bodytank/tanqueAzul.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #enemy {
     width: 100px;
     height: 100px;
-    background-color: lightgoldenrodyellow;
     position: absolute;
+    background-image: url('../assets/images/bodytank/tanqueMarron.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(180deg);
 }
 
 .bullets {
-    width: 15px;
+    width: 20px;
     height: 15px;
-    background-color: yellowgreen;
+    background-image: url('/assets/images/projectile/cannonball.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius:15px;
+    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437);
+}
+
+.title {
+    color: aliceblue;
+    position: absolute;
+    top: 100px;
+}
+
+.start {
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-image: url('../assets/images/Background/logoPixelPanzers\.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 300px 300px;
+}
+
+
+.start > label {
+    color: rgb(250, 250, 250);
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 8px 8px 0px rgb(37, 22, 1), 8px 8px 10px rgb(248, 243, 236);
+    position: absolute;
+    top: 300px;
+    font-weight: 900;
+    
+}
+
+#name {
+    text-align: center;
+    margin: 15px auto;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 1px rgb(207, 157, 92);
+    position: absolute;
+    top: 350px;
+}
+
+#startButton {
+    height: 50px;
+    width: 150px;
+    font-size: x-large;
+    font-weight: 900;
+    position: absolute;
+    top: 450px;
+}
+
+#startButton:hover {
+    color:rgb(207, 157, 92);
+    box-shadow: 4px 4px 4px black;
+    background-color: #093d09;
+    border-color: rgb(207, 157, 92);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#resetButton {
     position: absolute;
 }
