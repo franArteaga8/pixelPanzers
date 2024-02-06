@@ -10,6 +10,7 @@ class Tank {
         this.sprite
         this.id = id
         this.isDead = false
+        this.health = 3
 
     }
 

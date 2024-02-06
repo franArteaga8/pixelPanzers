@@ -40,28 +40,35 @@ class Bullet {
 
     }
 
-    checkCollision (target) {
+    checkCollision (target) 
+    {
         if (this.x >= this.parent.offsetWidth + this.width + 30 || this.x <= 0 - 30 ) 
         {
             this.despawnBullets()
         }
         
-        this.target.forEach(enemy => {
+            this.target.forEach(tank => 
+            {
 
-            if  (this.x < enemy.x + enemy.width &&
-                (this.x + this.width) > enemy.x &&
-                this.y < enemy.y + enemy.height &&
-                (this.y + this.height) > enemy.y)
+                if  (this.x < tank.x + tank.width &&
+                    (this.x + this.width) > tank.x &&
+                    this.y < tank.y + tank.height &&
+                    (this.y + this.height) > tank.y)
                 {
                     this.despawnBullets()
-                    enemy.despawnPlayer()
+                    tank.health --
+                    console.log(this.target[0].id + '\'s health = ' +  tank.health)
 
-                 
-                    this.target = this.target.splice(this.target.indexOf(enemy.sprite), 1)
+                    if (tank.health <= 0)
+                    {
+                        tank.despawnPlayer()
+                        this.target = this.target.splice(this.target.indexOf(tank.sprite), 1)
+                    }
                     
-            }
+                    return true
+                }
             
-        });
+            });
      
     }
 }

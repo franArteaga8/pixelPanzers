@@ -4,6 +4,10 @@ let startDiv = document.getElementById('startDiv')
 
 let canvasWidth = canvas.offsetWidth
 let canvasHeight = canvas.offsetHeight
+let playerStats = document.getElementById('playerStats')
+let enemyStats = document.getElementById('enemyStats')
+let crono = document.getElementById('crono')
+
 
 let bullets = []
 let friends = []
