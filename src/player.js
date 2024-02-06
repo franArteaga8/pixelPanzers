@@ -11,6 +11,7 @@ class Tank {
         this.id = id
         this.isDead = false
         this.health = 3
+        this.bullets = []
 
     }
 

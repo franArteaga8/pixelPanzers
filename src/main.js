@@ -9,7 +9,7 @@ let enemyStats = document.getElementById('enemyStats')
 let crono = document.getElementById('crono')
 let playerName = document.getElementById('name')
 let playerEnemy = document.getElementById('enemyStats')
-playerName.value = ''
+playerName.value = ' '
 
 let bullets = []
 let friends = []
