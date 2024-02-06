@@ -30,22 +30,34 @@ body {
     width: 100px;
     height: 100px;
     position: absolute;
-    background-image: url();
+    background-image: url('../assets/images/bodytank/tanqueAzul.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #enemy {
     width: 100px;
     height: 100px;
-    background-color: lightgoldenrodyellow;
     position: absolute;
+    background-image: url('../assets/images/bodytank/tanqueMarron.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(180deg);
 }
 
 .bullets {
     width: 20px;
     height: 15px;
-    background-color: yellowgreen;
+    background-image: url('/assets/images/projectile/cannonball.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
     position: absolute;
-    border-radius: 0 15px 15px 0;
+    border-radius:15px;
+    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437);
 }
 
 .title {
