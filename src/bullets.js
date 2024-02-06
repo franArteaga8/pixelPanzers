@@ -1,74 +1,74 @@
 class Bullet {
-    constructor (x, y, parent, target, obstacles, bullets, direction) {
-        this.x = x
-        this.y = y
-        this.parent = parent
-        this.friends = friends
-        this.target = target
-        this.obstacles = obstacles
-        this.bullets = bullets
-        this.speed = 15
-        this.direction = direction
-        this.width = 15
-        this.height = 15
-        this.sprite
-        this.move = this.move.bind(this)
-        this.timerId
+  constructor(x, y, parent, target, obstacles, bullets, direction) {
+    this.x = x;
+    this.y = y;
+    this.parent = parent;
+    this.friends = friends;
+    this.target = target;
+    this.obstacles = obstacles;
+    this.bullets = bullets;
+    this.speed = 15;
+    this.direction = direction;
+    this.width = 15;
+    this.height = 15;
+    this.sprite;
+    this.move = this.move.bind(this);
+    this.timerId;
+  }
 
+  spawnBullets() {
+    let newBullet = document.createElement("div");
+    newBullet.classList.add("bullets");
+    newBullet.style.top = this.y + "px";
+    newBullet.style.left = this.x + "px";
+    this.parent.appendChild(newBullet);
+    this.sprite = newBullet;
+  }
+
+  move() {
+    this.x += this.speed * this.direction;
+    this.sprite.style.left = this.x + "px";
+    this.checkCollision();
+  }
+
+  despawnBullets() {
+    this.parent.removeChild(this.sprite);
+    clearInterval(this.timerId);
+    this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1);
+  }
+
+  checkCollision(target) {
+    if (
+      this.x >= this.parent.offsetWidth + this.width + 30 ||
+      this.x <= 0 - 30
+    ) {
+      this.despawnBullets();
     }
 
-    spawnBullets () {
-        let newBullet = document.createElement('div')
-        newBullet.classList.add('bullets')
-        newBullet.style.top = this.y + 'px'
-        newBullet.style.left = this.x + 'px'
-        this.parent.appendChild(newBullet)
-        this.sprite = newBullet
-    }
+    this.target.forEach((tank) => {
+      if (
+        this.x < tank.x + tank.width &&
+        this.x + this.width > tank.x &&
+        this.y < tank.y + tank.height &&
+        this.y + this.height > tank.y
+      ) {
+        this.despawnBullets();
 
-    move() {
-        this.x += this.speed * this.direction
-        this.sprite.style.left = this.x + 'px'
-        this.checkCollision()
+        tank.health--;
+      
+        playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
        
-    }
+        enemyStats.textContent = `Enemy: ${enemyTank.health}`;
 
-    despawnBullets () {
-        this.parent.removeChild(this.sprite)
-        clearInterval(this.timerId)
-        this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1)
+        console.log(this.target[0].id + "'s health = " + tank.health);
 
-    }
-
-    checkCollision (target) 
-    {
-        if (this.x >= this.parent.offsetWidth + this.width + 30 || this.x <= 0 - 30 ) 
-        {
-            this.despawnBullets()
+        if (tank.health <= 0) {
+          tank.despawnPlayer();
+          this.target = this.target.splice(this.target.indexOf(tank.sprite), 1);
         }
-        
-            this.target.forEach(tank => 
-            {
 
-                if  (this.x < tank.x + tank.width &&
-                    (this.x + this.width) > tank.x &&
-                    this.y < tank.y + tank.height &&
-                    (this.y + this.height) > tank.y)
-                {
-                    this.despawnBullets()
-                    tank.health --
-                    console.log(this.target[0].id + '\'s health = ' +  tank.health)
-
-                    if (tank.health <= 0)
-                    {
-                        tank.despawnPlayer()
-                        this.target = this.target.splice(this.target.indexOf(tank.sprite), 1)
-                    }
-                    
-                    return true
-                }
-            
-            });
-     
-    }
+        return true;
+      }
+    });
+  }
 }

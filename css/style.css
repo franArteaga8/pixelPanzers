@@ -27,6 +27,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    font-size: 100px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 600px;
 }
 
 #player {
@@ -69,7 +73,27 @@ body {
     top: 25px;
     font-size: 100px;
 }
+.displayStats{
+    position: absolute;
+    width: 1200px;
+    height: 40px;
+    top: 200px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
 
+}
+.stats{
+    width: 30%;
+}
+#enemyStats{
+    text-align: end;
+}
+#crono{
+    width: 20%;
+}
 .start {
     position: absolute;
     height: 600px;

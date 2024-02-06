@@ -7,7 +7,9 @@ let canvasHeight = canvas.offsetHeight
 let playerStats = document.getElementById('playerStats')
 let enemyStats = document.getElementById('enemyStats')
 let crono = document.getElementById('crono')
-
+let playerName = document.getElementById('name')
+let playerEnemy = document.getElementById('enemyStats')
+playerName.value = ''
 
 let bullets = []
 let friends = []
@@ -28,6 +30,10 @@ startButton.addEventListener('click', startGame)
 
 function startGame() {
 startDiv.classList.add('hidden')
+
+
+playerStats.textContent = `${playerName.value}: ${mainTank.health}`
+enemyStats.textContent = `Enemy: ${enemyTank.health}`
 
 window.addEventListener('keydown', (e) => {
     switch(e.key){
@@ -99,7 +105,13 @@ window.addEventListener('keydown', (e) => {
       clearInterval(intervalDir)
       clearInterval(enemyTimerId)
     }
-    
+    if(mainTank.isDead){
+      canvas.textContent = `You lose!!!`
+      canvas.style.color = 'red'
+    }else if(enemyTank.isDead){
+      canvas.textContent = `${playerName.value}, you win!!!`
+      canvas.style.color = 'green'
+    }
   }
 }
 
