@@ -93,3 +93,7 @@ body {
 .hidden {
     visibility: hidden;
 }
+
+#resetButton {
+    position: absolute;
+}
