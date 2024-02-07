@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    overflow: hidden;
+    background-image: url('../assets/images/Background/FondoStart.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Pixelify Sans', sans-serif;
+
+}
+    
+
+#canvas {
+    min-width: 1200px;
+    width: 70%;
+    min-height: 600px;
+    height: 60%;
+    margin: 0 auto;
+    background-color: darkslategray;
+    position: relative;
+    overflow: hidden;
+    background-image: url('../assets/images/Background/fondocampoBatalla.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+}
+
+#player {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-image: url('../assets/images/bodytank/tanqueAzul.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#enemy {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-image: url('../assets/images/bodytank/tanqueMarron.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(180deg);
+}
+
+.bullets {
+    width: 20px;
+    height: 15px;
+    background-image: url('/assets/images/projectile/cannonball.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius:15px;
+   box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437); 
+ 
+}
+
+.title {
+    display: block;
+   position: absolute;
+    color: aliceblue;
+    top: 3vh;
+    font-size: 5rem;
+}
+.displayStats{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    min-width: 1200px;
+    width: 70%;
+    height: 20px;
+    top: 13vh;
+    font-size: 2rem;
+
+}
+.stats{
+    width: 40%;
+}
+#enemyStats{
+    text-align: end;
+}
+#crono{
+    width: 20%;
+}
+.start,.resetDiv {
+    position: absolute;    
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+   
+}
+
+.start{
+    height: 600px;
+    width: 600px;
+    background-image: url('../assets/images/Background/logoPixelPanzers\.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 300px 300px;
+}
+.resetDiv{
+    height: 600px;
+    width: 1200px;
+    font-size: 100px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 200px;
+    visibility: hidden;
+}
+.resetDivVisibility{
+   
+    visibility: visible;
+/* background-image: url('../assets/sounds/soundtrack.mp3'); */
+  
+}
+#finalMessage{
+    position: absolute;
+    width: 1000px;
+    height: 300px;
+    top:110px
+}
+#resetButton {
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    font-size: x-large;
+    font-weight: 900;
+    top: 310px;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+
+#name {
+    text-align: center;
+    margin: 15px auto;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 1px rgb(207, 157, 92);
+    position: absolute;
+    top: 280px;
+    font-family: 'Pixelify Sans', sans-serif;
+
+}
+
+#startButton {
+    height: 50px;
+    width: 150px;
+    font-size: x-large;
+    font-weight: 900;
+    position: absolute;
+    top: 410px;
+    font-family: 'Pixelify Sans', sans-serif;
+
+
+}
+
+#startButton:hover {
+    color:rgb(207, 157, 92);
+    box-shadow: 4px 4px 4px black;
+    background-color: #093d09;
+    border-color: rgb(207, 157, 92);
+}
+
+.hidden {
+    visibility: hidden;
+}
+

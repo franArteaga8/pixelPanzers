@@ -5,9 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>protoTank_v1</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/src/bullets.js" defer></script> 
+    <script src="/src/player.js" defer></script>
     <script src="/src/main.js" defer></script>
 </head>
 <body>
-    
+    <h1 class="title">Pixel Panzers</h1>
+    <div class="displayStats">
+        <div class="stats" id="playerStats">
+  
+        </div>
+        <div class="crono" id="crono"></div>
+        <div class="stats" id="enemyStats">
+
+        </div>
+
+    </div>
+    <div class="start" id="startDiv">
+        
+        <input type="text" name="name" id="name" placeholder="INSERT NAME" maxlength="5" minlength="3">
+        <button type="submit" id="startButton">START</button>
+    </div>
+    <div id="canvas"></div>
+    <div class="resetDiv" id="resetDiv">
+        <div class="finalMessage" id="finalMessage"></div>
+        <button type="reset" id="resetButton">RESET</button>
+    </div>
 </body>
 </html>
