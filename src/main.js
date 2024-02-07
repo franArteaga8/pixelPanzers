@@ -20,8 +20,39 @@ let bullets = [];
 let friends = [];
 let enemies = [];
 let obstacles = [];
+let gameStarted = false;
 
+window.addEventListener("keydown", (e) => {
+  console.log(gameStarted)
+  if (gameStarted) {
+    switch (e.key) {
+      case "w":
+        mainTank.direction = -1;
+        break;
+      case "s":
+        mainTank.direction = 1;
+        break;
+      case " ":
+        if (enemyTank.isDead === false) {
+          console.log('bang')
+          let newBullet = new Bullet(mainTank.x + mainTank.width / 2, mainTank.y + mainTank.height / 2 - 7.5, canvas, enemies, obstacles, bullets, 1);
+          newBullet.spawnBullets();
+          bullets.push(newBullet);
+          newBullet.timerId = setInterval(newBullet.move, 24);
+        }
+  
+        break;
+    }
+  }
+})
 
+window.addEventListener("keyup", (e) => {
+  if (gameStarted) {
+    if (e.key === "w" || e.key === "s") {
+      mainTank.direction = 0;
+    }
+  }
+});
 
 let mainTank = new Tank(
   canvasWidth / 10,
@@ -29,6 +60,7 @@ let mainTank = new Tank(
   canvas,
   "player"
 );
+
 mainTank.spawnPlayer();
 friends.push(mainTank);
 
@@ -45,48 +77,16 @@ startButton.addEventListener("click", startGame);
 resetButton.addEventListener("click", resetGame);
 
 let music = new Audio('./assets/sounds/soundtrack.mp3')
+
 function startGame() {
+  gameStarted = true
+  console.log('start', gameStarted) 
   music.play()
   startDiv.classList.add("hidden");
 
 
   playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
   enemyStats.textContent = `Enemy: ${enemyTank.health}`;
-
-  window.addEventListener("keydown", (e) => {
-    switch (e.key) {
-      case "w":
-        mainTank.direction = -1;
-        break;
-      case "s":
-        mainTank.direction = 1;
-        break;
-      case " ":
-        if (enemyTank.isDead === false) {
-          let newBullet = new Bullet(
-            mainTank.x + mainTank.width / 2,
-            mainTank.y + mainTank.height / 2 - 7.5,
-            canvas,
-            enemies,
-            obstacles,
-            bullets,
-            1
-          );
-          newBullet.spawnBullets();
-         
-          bullets.push(newBullet);
-          newBullet.timerId = setInterval(newBullet.move, 24);
-        }
-
-        break;
-    }
-  });
-
-  window.addEventListener("keyup", (e) => {
-    if (e.key === "w" || e.key === "s") {
-      mainTank.direction = 0;
-    }
-  });
 
   let timerId = setInterval(mainTankMovement, 24);
 
@@ -121,10 +121,13 @@ function startGame() {
   let enemyTimerId = setInterval(enemyTankMovement, 24);
 
   function gameOver() {
+
     if (mainTank.isDead === true || enemyTank.isDead === true) {
+      gameStarted = false;
       clearInterval(timerId);
-      clearInterval(intervalDir);
       clearInterval(enemyTimerId);
+      clearInterval(intervalDir);
+      
       music.pause()
     }
     
@@ -142,34 +145,6 @@ function startGame() {
       finalMessage.innerText = `${playerName.value}, you win!!!`;
       finalMessage.style.color = "green";
     }
-    window.removeEventListener("keydown", (e) => {
-      switch (e.key) {
-        case "w":
-          mainTank.direction = -1;
-          break;
-        case "s":
-          mainTank.direction = 1;
-          break;
-        case " ":
-          if (enemyTank.isDead === false) {
-            let newBullet = new Bullet(
-              mainTank.x + mainTank.width / 2,
-              mainTank.y + mainTank.height / 2 - 7.5,
-              canvas,
-              enemies,
-              obstacles,
-              bullets,
-              1
-            );
-            newBullet.spawnBullets();
-           
-            bullets.push(newBullet);
-            newBullet.timerId = setInterval(newBullet.move, 24);
-          }
-  
-          break;
-      }
-    });
   }}
 
   function resetGame(){
@@ -179,8 +154,9 @@ function startGame() {
     } else if (enemies.length !== 0 ){
       canvas.removeChild(document.getElementById('enemy'))
     }
-  bullets=[]
-  console.log(bullets);
+  console.log('Este array es bullets:  ')
+  bullets.forEach((b) => b.despawnBullets())
+  bullets = []
   friends = []
   enemies = []
   obstacles = []
@@ -202,9 +178,9 @@ function startGame() {
     canvas,
     "enemy"
   );
+
   enemyTank.spawnPlayer();
   enemies.push(enemyTank);
   startDiv.classList.remove("hidden");
   resetDiv.classList.remove('resetDivVisibility')
-console.log(intervalDir);
 }
