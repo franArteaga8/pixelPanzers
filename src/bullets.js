@@ -35,14 +35,14 @@ class Bullet {
   }
 
   despawnBullets() {
-    console.log(this.bullets)
-    if (this.bullets.length > 0){
-      clearInterval(this.timerId);
-      console.log('this parent: ', this.parent)
-      this.parent.removeChild(this.sprite);
-      this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1);
-    }
+   
+    
+    clearInterval(this.timerId);
+    this.sprite.remove()
+    this.bullets.splice(this.bullets.indexOf(this), 1);
+
   }
+
 
   checkCollision(target) {
     if (
@@ -68,7 +68,7 @@ class Bullet {
        
         enemyStats.textContent = `Enemy: ${enemyTank.health}`;
 
-        console.log(this.target[0].id + "'s health = " + tank.health);
+        
 
         if (tank.health <= 0) {
           tank.despawnPlayer();
