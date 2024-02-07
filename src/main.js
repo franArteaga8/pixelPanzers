@@ -13,9 +13,6 @@ let resetDiv = document.getElementById("resetDiv");
 let finalMessage = document.getElementById("finalMessage");
 let resetButton = document.getElementById("resetButton");
 
-
-
-
 let bullets = [];
 let friends = [];
 let enemies = [];
@@ -33,17 +30,24 @@ window.addEventListener("keydown", (e) => {
         break;
       case " ":
         if (enemyTank.isDead === false) {
-       
-          let newBullet = new Bullet(mainTank.x + mainTank.width / 2, mainTank.y + mainTank.height / 2 - 7.5, canvas, enemies, obstacles, bullets, 1);
+          let newBullet = new Bullet(
+            mainTank.x + mainTank.width / 2,
+            mainTank.y + mainTank.height / 2 - 7.5,
+            canvas,
+            enemies,
+            obstacles,
+            bullets,
+            1
+          );
           newBullet.spawnBullets();
           bullets.push(newBullet);
           newBullet.timerId = setInterval(newBullet.move, 24);
         }
-  
+
         break;
     }
   }
-})
+});
 
 window.addEventListener("keyup", (e) => {
   if (gameStarted) {
@@ -75,14 +79,16 @@ enemies.push(enemyTank);
 startButton.addEventListener("click", startGame);
 resetButton.addEventListener("click", resetGame);
 
-let music = new Audio('./assets/sounds/soundtrack.mp3')
+let music
 
 function startGame() {
-  gameStarted = true
-
-  music.play()
+  gameStarted = true;
+  music = new Audio("./assets/sounds/soundtrack.mp3");
+  music.currentTime = 0
+  music.play();
+  music.volume = 0.5
+  music.loop = true
   startDiv.classList.add("hidden");
-
 
   playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
   enemyStats.textContent = `Enemy: ${enemyTank.health}`;
@@ -114,69 +120,61 @@ function startGame() {
 
   function enemyTankMovement() {
     enemyTank.move();
-    gameOver()
+    gameOver();
   }
 
   let enemyTimerId = setInterval(enemyTankMovement, 24);
 
   function gameOver() {
-
     if (mainTank.isDead === true || enemyTank.isDead === true) {
       gameStarted = false;
 
-      
       clearInterval(timerId);
       clearInterval(enemyTimerId);
       clearInterval(intervalDir);
-      
-      bullets.forEach(bullet => clearInterval(bullet.timerId));
-   
-      const balas = [...document.getElementsByClassName("bullets")]
-      balas.forEach(bala => {
-        canvas.removeChild(bala)
-      })
-      bullets = []
-            
-      }
-      
-      music.pause()
-      
-      if (mainTank.isDead) {
-        let loserSound = new Audio('./assets/sounds/musicaDerrota.mp3')
-        loserSound.play() 
-        resetDiv.classList.add("resetDivVisibility");
-        finalMessage.innerText = `You lose!!!`;
-        finalMessage.style.color = "red";
-        
-      } else if (enemyTank.isDead) {
-        let winnerSound = new Audio('./assets/sounds/musicaVictoria.wav')
-        winnerSound.play() 
-        resetDiv.classList.add("resetDivVisibility");
-        finalMessage.innerText = `${playerName.value}, you win!!!`;
-        finalMessage.style.color = "green";
-      }
+      music.pause();
+      bullets.forEach((bullet) => clearInterval(bullet.timerId));
+
+      const balas = [...document.getElementsByClassName("bullets")];
+      balas.forEach((bala) => {
+        canvas.removeChild(bala);
+      });
+      bullets = [];
     }
 
-    
+   
+
+    if (mainTank.isDead) {
+      let loserSound = new Audio("./assets/sounds/musicaDerrota.mp3");
+      loserSound.play();
+      resetDiv.classList.add("resetDivVisibility");
+      finalMessage.innerText = `You lose!!!`;
+      finalMessage.style.color = "red";
+    } else if (enemyTank.isDead) {
+      let winnerSound = new Audio("./assets/sounds/musicaVictoria.wav");
+      winnerSound.play();
+      resetDiv.classList.add("resetDivVisibility");
+      finalMessage.innerText = `${playerName.value}, you win!!!`;
+      finalMessage.style.color = "green";
+    }
+  }
+}
+
+function resetGame() {
+  if (friends.length !== 0) {
+    canvas.removeChild(document.getElementById("player"));
+  } else if (enemies.length !== 0) {
+    canvas.removeChild(document.getElementById("enemy"));
   }
 
-  function resetGame(){
-
-   
-    if (friends.length !== 0 ){
-      canvas.removeChild(document.getElementById('player'))
-    } else if (enemies.length !== 0 ){
-      canvas.removeChild(document.getElementById('enemy'))
-    }
-  
-  bullets = []
-  friends = []
-  enemies = []
-  obstacles = []
-  playerName.value = ""; 
+  bullets = [];
+  friends = [];
+  enemies = [];
+  obstacles = [];
+  playerName.value = "";
   playerStats.textContent = `Our next Hero?`;
   enemyStats.textContent = `Your enemy awaits..`;
-  music.pause()
+  music.pause();
 
   mainTank = new Tank(
     canvasWidth / 10,
@@ -197,5 +195,5 @@ function startGame() {
   enemyTank.spawnPlayer();
   enemies.push(enemyTank);
   startDiv.classList.remove("hidden");
-  resetDiv.classList.remove('resetDivVisibility')
+  resetDiv.classList.remove("resetDivVisibility");
 }
