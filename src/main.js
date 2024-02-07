@@ -83,7 +83,7 @@ let music
 
 function startGame() {
   gameStarted = true;
-  music = new Audio("./../assets/sounds/soundtrack.mp3");
+  music = new Audio("../assets/sounds/soundtrack.mp3");
   music.currentTime = 0
   music.play();
   music.volume = 0.5
@@ -145,13 +145,13 @@ function startGame() {
    
 
     if (mainTank.isDead) {
-      let loserSound = new Audio("./../assets/sounds/musicaDerrota.mp3");
+      let loserSound = new Audio("../assets/sounds/musicaDerrota.mp3");
       loserSound.play();
       resetDiv.classList.add("resetDivVisibility");
       finalMessage.innerText = `You lose!!!`;
       finalMessage.style.color = "red";
     } else if (enemyTank.isDead) {
-      let winnerSound = new Audio("./../assets/sounds/musicaVictoria.wav");
+      let winnerSound = new Audio("../assets/sounds/musicaVictoria.wav");
       winnerSound.play();
       resetDiv.classList.add("resetDivVisibility");
       finalMessage.innerText = `${playerName.value}, you win!!!`;
