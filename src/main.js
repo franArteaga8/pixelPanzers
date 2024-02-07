@@ -76,31 +76,50 @@ let enemyTank = new Tank(
 enemyTank.spawnPlayer();
 enemies.push(enemyTank);
 
+let obstacle = new Obstacle(
+  canvasWidth / 2 - 10,
+  canvasHeight / 2 - 30,
+  canvas
+);
+
 startButton.addEventListener("click", startGame);
 resetButton.addEventListener("click", resetGame);
 
-let music
+let music;
 
 function startGame() {
   gameStarted = true;
   music = new Audio("./assets/sounds/soundtrack.mp3");
-  music.currentTime = 0
+  music.currentTime = 0;
   music.play();
-  music.volume = 0.5
-  music.loop = true
+  music.volume = 0.35;
+  music.loop = true;
   startDiv.classList.add("hidden");
 
   playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
   enemyStats.textContent = `Enemy: ${enemyTank.health}`;
 
-  let timerId = setInterval(mainTankMovement, 24);
+  obstacle.spawnObstacle();
+  obstacles.push(obstacle);
 
-  function mainTankMovement() {
+  /*  let timer Id = setInterval(mainTankMovement, 24); */
+
+  /* function mainTankMovement() {
     mainTank.move();
+    gameOver();
+  } */
+
+  let totalInter = setInterval(mainMove, 24);
+  function mainMove() {
+    mainTank.move();
+    enemyTank.move();
+    obstacle.move();
+
     gameOver();
   }
 
   let intervalDir = setInterval(() => {
+    obstacle.direction = obstacle.obstacleDirRNG();
     enemyTank.direction = enemyTank.enemyDirRNG();
     if (enemyTank.direction === 0) {
       let newBullet = new Bullet(
@@ -118,19 +137,21 @@ function startGame() {
     }
   }, 450);
 
-  function enemyTankMovement() {
+  /*  function enemyTankMovement() {
     enemyTank.move();
     gameOver();
-  }
+  } */
 
-  let enemyTimerId = setInterval(enemyTankMovement, 24);
+  /*  let enemyTimer Id = setInterval(enemyTankMovement, 24); */
 
   function gameOver() {
+    
     if (mainTank.isDead === true || enemyTank.isDead === true) {
       gameStarted = false;
-
-      clearInterval(timerId);
-      clearInterval(enemyTimerId);
+     
+      clearInterval(totalInter);
+      /*  clearInterval(timer Id);
+      clearInterval(enemyTimer Id);*/
       clearInterval(intervalDir);
       music.pause();
       bullets.forEach((bullet) => clearInterval(bullet.timerId));
@@ -139,10 +160,19 @@ function startGame() {
       balas.forEach((bala) => {
         canvas.removeChild(bala);
       });
-      bullets = [];
-    }
 
-   
+      bullets = [];
+      obstacle.despawnObstacle()
+
+      const obstArr = [...document.getElementsByClassName("obstacle")];
+     
+      obstArr.forEach((obs) => {
+      
+        canvas.removeChild(obs);
+      });
+      
+      obstacles = [];
+    }
 
     if (mainTank.isDead) {
       let loserSound = new Audio("./assets/sounds/musicaDerrota.mp3");
@@ -165,6 +195,9 @@ function resetGame() {
     canvas.removeChild(document.getElementById("player"));
   } else if (enemies.length !== 0) {
     canvas.removeChild(document.getElementById("enemy"));
+  }
+  if (obstacles.length !== 0) {
+    canvas.removeChild(document.getElementById("obstacle"));
   }
 
   bullets = [];
@@ -191,9 +224,14 @@ function resetGame() {
     canvas,
     "enemy"
   );
-
   enemyTank.spawnPlayer();
   enemies.push(enemyTank);
+
+  obstacle = new Obstacle(canvasWidth / 2 - 10, canvasHeight / 2 - 30, canvas);
+
+  obstacle.spawnObstacle();
+  obstacles.push(obstacle);
+
   startDiv.classList.remove("hidden");
   resetDiv.classList.remove("resetDivVisibility");
 }
