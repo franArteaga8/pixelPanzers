@@ -24,7 +24,7 @@ class Bullet {
     this.parent.appendChild(newBullet);
     this.sprite = newBullet;
     let shootSound = new Audio('./assets/sounds/disparoTanque2.flac')
-   shootSound.pause()
+    shootSound.pause()
     shootSound.play()
   }
 
@@ -36,7 +36,6 @@ class Bullet {
 
   despawnBullets() {
     this.parent.removeChild(this.sprite);
-    clearInterval(this.timerId);
     this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1);
   }
 

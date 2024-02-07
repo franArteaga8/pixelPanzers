@@ -36,11 +36,9 @@ class Tank {
 
     }
 
-    despawnPlayer(){
-        
+    despawnPlayer(){        
         this.parent.removeChild(this.sprite)
-        this.isDead = true
-        
+        this.isDead = true        
         
     }
 

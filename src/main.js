@@ -1,4 +1,6 @@
 let canvas = document.getElementById("canvas");
+
+
 let startButton = document.getElementById("startButton");
 let startDiv = document.getElementById("startDiv");
 
@@ -23,7 +25,7 @@ let obstacles = [];
 
 
 
-let mainTank = new Tank(
+/* let mainTank = new Tank(
   canvasWidth / 10,
   (canvasHeight - 100) / 2,
   canvas,
@@ -32,28 +34,31 @@ let mainTank = new Tank(
 mainTank.spawnPlayer();
 friends.push(mainTank);
 
-let enemyTank = new Tank(
+  let enemyTank = new Tank(
   canvasWidth - canvasWidth / 10 - 100,
   (canvasHeight - 100) / 2,
   canvas,
   "enemy"
-);
+); 
 enemyTank.spawnPlayer();
-enemies.push(enemyTank);
+enemies.push(enemyTank);*/
 
 startButton.addEventListener("click", startGame);
 resetButton.addEventListener("click", resetGame);
 
-let music = new Audio('./assets/sounds/soundtrack.mp3')
+
+
+/* let music = new Audio('./assets/sounds/soundtrack.mp3') */
+
 function startGame() {
   music.play()
   startDiv.classList.add("hidden");
 
 
-  playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
-  enemyStats.textContent = `Enemy: ${enemyTank.health}`;
+ /*  playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
+  enemyStats.textContent = `Enemy: ${enemyTank.health}`; */
 
-  window.addEventListener("keydown", (e) => {
+  /* window.addEventListener("keydown", (e) => {
     switch (e.key) {
       case "w":
         mainTank.direction = -1;
@@ -86,9 +91,9 @@ function startGame() {
     if (e.key === "w" || e.key === "s") {
       mainTank.direction = 0;
     }
-  });
+  }); */
 
-  let timerId = setInterval(mainTankMovement, 24);
+  //let timerId = setInterval(mainTankMovement, 24);
 
   function mainTankMovement() {
     mainTank.move();
