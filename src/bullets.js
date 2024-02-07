@@ -35,9 +35,13 @@ class Bullet {
   }
 
   despawnBullets() {
-    this.parent.removeChild(this.sprite);
-    clearInterval(this.timerId);
-    this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1);
+    console.log(this.bullets)
+    if (this.bullets.length > 0){
+      clearInterval(this.timerId);
+      console.log('this parent: ', this.parent)
+      this.parent.removeChild(this.sprite);
+      this.bullets = this.bullets.splice(this.bullets.indexOf(this.sprite), 1);
+    }
   }
 
   checkCollision(target) {

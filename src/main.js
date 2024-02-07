@@ -124,6 +124,15 @@ function startGame() {
 
     if (mainTank.isDead === true || enemyTank.isDead === true) {
       gameStarted = false;
+
+      if (bullets.length > 0)
+    {
+      for (let i = 0; i < bullets.length; i++){
+        bullets[i].despawnBullets()
+      }
+      /* bullets.forEach((b) => b.despawnBullets()) */
+    }
+
       clearInterval(timerId);
       clearInterval(enemyTimerId);
       clearInterval(intervalDir);
@@ -145,22 +154,33 @@ function startGame() {
       finalMessage.innerText = `${playerName.value}, you win!!!`;
       finalMessage.style.color = "green";
     }
+
+    
   }}
 
   function resetGame(){
+
+    /* if (bullets.length > 0)
+    {
+      for (let i = 0; i < bullets.length; i++){
+        bullets[i].despawnBullets()
+      }
+      /* bullets.forEach((b) => b.despawnBullets()) 
+    } */
 
     if (friends.length !== 0 ){
       canvas.removeChild(document.getElementById('player'))
     } else if (enemies.length !== 0 ){
       canvas.removeChild(document.getElementById('enemy'))
     }
-  console.log('Este array es bullets:  ')
-  bullets.forEach((b) => b.despawnBullets())
+  
   bullets = []
   friends = []
   enemies = []
   obstacles = []
-  playerName.value = " "; 
+  playerName.value = ""; 
+  playerStats.textContent = `Our next Hero?`;
+  enemyStats.textContent = `Your enemy awaits..`;
   music.pause()
 
   mainTank = new Tank(
