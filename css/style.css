@@ -17,8 +17,10 @@ body {
     
 
 #canvas {
-    width: 1200px;
-    height: 600px;
+    min-width: 1200px;
+    width: 70%;
+    min-height: 600px;
+    height: 60%;
     margin: 0 auto;
     background-color: darkslategray;
     position: relative;
@@ -61,29 +63,32 @@ body {
     background-color: rgb(255, 255, 255);
     position: absolute;
     border-radius:15px;
-    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437);
+   box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437); 
+ 
 }
 
 .title {
+    display: block;
+   position: absolute;
     color: aliceblue;
-    position: absolute;
-    top: 25px;
-    font-size: 100px;
+    top: 3vh;
+    font-size: 5rem;
 }
 .displayStats{
     position: absolute;
-    width: 1200px;
-    height: 40px;
-    top: 200px;
-    font-size: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: aliceblue;
+    min-width: 1200px;
+    width: 70%;
+    height: 2sd0px;
+    top: 13vh;
+    font-size: 3rem;
 
 }
 .stats{
-    width: 30%;
+    width: 40%;
 }
 #enemyStats{
     text-align: end;
