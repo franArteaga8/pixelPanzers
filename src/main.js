@@ -1,16 +1,17 @@
 let canvas = document.getElementById("canvas");
+let canvasWidth = canvas.offsetWidth;
+let canvasHeight = canvas.offsetHeight;
 
 
 let startButton = document.getElementById("startButton");
 let startDiv = document.getElementById("startDiv");
 
-let canvasWidth = canvas.offsetWidth;
-let canvasHeight = canvas.offsetHeight;
 let playerStats = document.getElementById("playerStats");
 let enemyStats = document.getElementById("enemyStats");
 let crono = document.getElementById("crono");
+
 let playerName = document.getElementById("name");
-let playerEnemy = document.getElementById("enemyStats");
+
 let resetDiv = document.getElementById("resetDiv");
 let finalMessage = document.getElementById("finalMessage");
 let resetButton = document.getElementById("resetButton");
@@ -42,20 +43,20 @@ friends.push(mainTank);
 ); 
 enemyTank.spawnPlayer();
 enemies.push(enemyTank);*/
+//? pendiente
+/* startButton.addEventListener("click", startGame);
+resetButton.addEventListener("click", resetGame); */
 
-startButton.addEventListener("click", startGame);
-resetButton.addEventListener("click", resetGame);
 
 
-
-/* let music = new Audio('./assets/sounds/soundtrack.mp3') */
+/* let music = new Audio('./assets/sounds/soundtrack.mp3') 
 
 function startGame() {
   music.play()
   startDiv.classList.add("hidden");
 
 
- /*  playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
+playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
   enemyStats.textContent = `Enemy: ${enemyTank.health}`; */
 
   /* window.addEventListener("keydown", (e) => {
@@ -93,14 +94,14 @@ function startGame() {
     }
   }); */
 
-  //let timerId = setInterval(mainTankMovement, 24);
+  //? let timerId = setInterval(mainTankMovement, 24);
 
-  function mainTankMovement() {
+  /* function mainTankMovement() {
     mainTank.move();
     gameOver();
-  }
-
-  let intervalDir = setInterval(() => {
+  } */
+//? Intervalo pendiente
+  /* let intervalDir = setInterval(() => {
     enemyTank.direction = enemyTank.enemyDirRNG();
     if (enemyTank.direction === 0) {
       let newBullet = new Bullet(
@@ -116,16 +117,16 @@ function startGame() {
       bullets.push(newBullet);
       newBullet.timerId = setInterval(newBullet.move, 24);
     }
-  }, 450);
+  }, 450); */
 
-  function enemyTankMovement() {
+ /*  function enemyTankMovement() {
     enemyTank.move();
     gameOver();
-  }
+  } */
 
-  let enemyTimerId = setInterval(enemyTankMovement, 24);
+ //? let enemyTimerId = setInterval(enemyTankMovement, 24);
 
-  function gameOver() {
+/*   function gameOver() {
     if (mainTank.isDead === true || enemyTank.isDead === true) {
       clearInterval(timerId);
       clearInterval(intervalDir);
@@ -175,9 +176,9 @@ function startGame() {
           break;
       }
     });
-  }}
+  }} */
 
-  function resetGame(){
+  /* function resetGame(){
 
     if (friends.length !== 0 ){
       canvas.removeChild(document.getElementById('player'))
@@ -211,5 +212,5 @@ function startGame() {
   enemies.push(enemyTank);
   startDiv.classList.remove("hidden");
   resetDiv.classList.remove('resetDivVisibility')
-console.log(intervalDir);
-}
+
+} */

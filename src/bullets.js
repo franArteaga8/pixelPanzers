@@ -28,7 +28,7 @@ class Bullet {
     shootSound.play()
   }
 
-  move() {
+  moveBullets() {
     this.x += this.speed * this.direction;
     this.sprite.style.left = this.x + "px";
     this.checkCollision();
