@@ -121,6 +121,18 @@ function startGame() {
     gameOver();
   }
 
+  let damageTakenTimer
+
+  function damageTaken(tank){
+
+    if (!tank.classList.contains("damageTakenClass")){
+      tank.classList.add("damageTakenClass");
+    }
+     damageTakenTimer = setTimeout(function(){
+      tank.classList.remove("damageTakenClass")
+    }, 400)
+}
+
   let intervalDir = setInterval(() => {
     obstacle.direction = obstacle.obstacleDirRNG();
     enemyTank.direction = enemyTank.enemyDirRNG();
@@ -146,13 +158,14 @@ function startGame() {
 
       clearInterval(totalInter);
       clearInterval(intervalDir);
+      clearTimeout(damageTakenTimer)
       music.pause();
 
       bullets.forEach((bullet) => clearInterval(bullet.timerId));
 
-      const balas = [...document.getElementsByClassName("bullets")];
-      balas.forEach((bala) => {
-        canvas.removeChild(bala);
+      const newBulletArr = [...document.getElementsByClassName("bullets")];
+      newBulletArr.forEach((bullet) => {
+        canvas.removeChild(bullet);
       });
 
       bullets = [];

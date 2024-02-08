@@ -64,34 +64,29 @@ class Bullet {
     }
 
     if (this.direction === -1) {
-      console.log(this.direction);
       if (
         this.x > obstacle.x  &&
         this.x < obstacle.x + obstacle.width &&
         this.y < obstacle.y + obstacle.height &&
         this.y + this.height > obstacle.y
       ) {
-        console.log("enemy tank into  the wall");
         this.despawnBullets();
         return;
       }
     }
     if (this.direction === 1) {
-      console.log( this.direction);
       if (
         this.x < obstacle.x + obstacle.width &&
         this.x + this.width > obstacle.x &&
         this.y < obstacle.y + obstacle.height &&
         this.y + this.height > obstacle.y
       ) {
-        console.log("maintank tank into  the wall");
         this.despawnBullets();
         return;
       }
     }
 
     this.target.forEach((tank) => {
-      console.log(tank)
 
       if (
         this.x < tank.x + tank.width &&
