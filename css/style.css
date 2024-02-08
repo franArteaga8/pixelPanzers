@@ -17,10 +17,8 @@ body {
     
 
 #canvas {
-    min-width: 1200px;
-    width: 70%;
-    min-height: 600px;
-    height: 60%;
+    width: 1200px;
+    height: 600px;
     margin: 0 auto;
     background-color: darkslategray;
     position: relative;
@@ -87,15 +85,20 @@ body {
     width: 70%;
     height: 20px;
     top: 13vh;
-    font-size: 2rem;
+    font-size: 32px;
 
 }
 .instructions{
+    min-width: 900px;
+    width: 20%;
     top: 85%;
+    margin: 0 100px;
 }
 .instKeys{
-    margin: 1em;
-    width: 33%;
+    margin: 0.75em;
+  
+    font-size: 24px;
+    text-align: center;
 }
 .stats{
     width: 40%;
