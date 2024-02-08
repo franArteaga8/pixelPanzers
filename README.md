@@ -10,7 +10,8 @@
 ### DESCRIPTION: ###
 The game starts with one player taking on the machine.
 The player must shoot the enemy tank and hit it three times to win the game. 
-![image](https://github.com/franArteaga8/protoTank_v1/assets/110979479/52a1d638-472a-4948-b042-dd328c25ee76)
+![shootingPanzers](https://github.com/franArteaga8/protoTank_v1/assets/156690928/a4df42e6-a805-4ef1-8f0b-2146dad83cab)
+
 
 ### CONTROLS: ###
 The following keys control movement: 
