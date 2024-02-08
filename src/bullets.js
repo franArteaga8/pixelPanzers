@@ -64,9 +64,9 @@ class Bullet {
         explosionSound.play()
         tank.health--;
       
-        playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
+        playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
        
-        enemyStats.textContent = `Enemy: ${enemyTank.health}`;
+        enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
         
 
