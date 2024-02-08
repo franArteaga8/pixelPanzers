@@ -52,7 +52,7 @@ class Bullet {
     if (this.direction === -1) {
       console.log(this.direction);
       if (
-        this.x > obstacle.x &&
+        this.x > obstacle.x  &&
         this.x < obstacle.x + obstacle.width &&
         this.y < obstacle.y + obstacle.height &&
         this.y + this.height > obstacle.y

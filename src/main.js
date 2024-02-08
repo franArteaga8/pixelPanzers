@@ -17,7 +17,7 @@ let bullets = [];
 let friends = [];
 let enemies = [];
 let obstacles = [];
-let gameStarted = false
+let gameStarted = false;
 
 window.addEventListener("keydown", (e) => {
   if (gameStarted) {
@@ -39,7 +39,7 @@ window.addEventListener("keydown", (e) => {
             bullets,
             1
           );
-       
+
           newBullet.spawnBullets();
           bullets.push(newBullet);
           newBullet.timerId = setInterval(newBullet.move, 24);
@@ -92,7 +92,7 @@ function startGame() {
   gameStarted = true;
 
   music = new Audio("assets/sounds/soundtrack.mp3");
-  music.currentTime = 0
+  music.currentTime = 0;
 
   music.play();
   music.volume = 0.35;
@@ -104,7 +104,6 @@ function startGame() {
 
   obstacle.spawnObstacle();
   obstacles.push(obstacle);
-
 
   let totalInter = setInterval(mainMove, 24);
   function mainMove() {
@@ -133,12 +132,10 @@ function startGame() {
     }
   }, 450);
 
-
   function gameOver() {
-    
     if (mainTank.isDead === true || enemyTank.isDead === true) {
-  
-     
+      gameStarted = false;
+
       clearInterval(totalInter);
       clearInterval(intervalDir);
       music.pause();
@@ -151,16 +148,13 @@ function startGame() {
       });
 
       bullets = [];
-     
-      
-   
+
       const obstArr = [...document.getElementsByClassName("obstacle")];
-     
+
       obstArr.forEach((obst) => {
-      
-        obst.remove()
+        obst.remove();
       });
-      
+
       obstacles = [];
     }
 
