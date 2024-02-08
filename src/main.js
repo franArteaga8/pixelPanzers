@@ -31,8 +31,8 @@ window.addEventListener("keydown", (e) => {
       case " ":
         if (enemyTank.isDead === false) {
           let newBullet = new Bullet(
-            mainTank.x + mainTank.width / 2,
-            mainTank.y + mainTank.height / 2 - 7.5,
+            mainTank.x + mainTank.width / 2 + 50,
+            mainTank.y + mainTank.height / 2 + 10,
             canvas,
             enemies,
             obstacles,
@@ -89,15 +89,17 @@ let music;
 
 function startGame() {
   gameStarted = true;
-  music = new Audio("./assets/sounds/soundtrack.mp3");
-  music.currentTime = 0;
+
+  music = new Audio("assets/sounds/soundtrack.mp3");
+  music.currentTime = 0
+
   music.play();
   music.volume = 0.35;
   music.loop = true;
   startDiv.classList.add("hidden");
 
-  playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
-  enemyStats.textContent = `Enemy: ${enemyTank.health}`;
+  playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
+  enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
   obstacle.spawnObstacle();
   obstacles.push(obstacle);
@@ -123,8 +125,8 @@ function startGame() {
     enemyTank.direction = enemyTank.enemyDirRNG();
     if (enemyTank.direction === 0) {
       let newBullet = new Bullet(
-        enemyTank.x,
-        enemyTank.y + mainTank.height / 2 - 7.5,
+        enemyTank.x - 23,
+        enemyTank.y + mainTank.height / 2 + 7,
         canvas,
         friends,
         obstacles,
@@ -175,13 +177,13 @@ function startGame() {
     }
 
     if (mainTank.isDead) {
-      let loserSound = new Audio("./assets/sounds/musicaDerrota.mp3");
+      let loserSound = new Audio("assets/sounds/musicaDerrota.mp3");
       loserSound.play();
       resetDiv.classList.add("resetDivVisibility");
       finalMessage.innerText = `You lose!!!`;
       finalMessage.style.color = "red";
     } else if (enemyTank.isDead) {
-      let winnerSound = new Audio("./assets/sounds/musicaVictoria.wav");
+      let winnerSound = new Audio("assets/sounds/musicaVictoria.wav");
       winnerSound.play();
       resetDiv.classList.add("resetDivVisibility");
       finalMessage.innerText = `${playerName.value}, you win!!!`;

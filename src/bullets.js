@@ -23,7 +23,7 @@ class Bullet {
     newBullet.style.left = this.x + "px";
     this.parent.appendChild(newBullet);
     this.sprite = newBullet;
-    let shootSound = new Audio('./assets/sounds/disparoTanque2.flac')
+    let shootSound = new Audio('assets/sounds/disparoTanque2.flac')
    shootSound.pause()
     shootSound.play()
   }
@@ -60,13 +60,13 @@ class Bullet {
         this.y + this.height > tank.y
       ) {
         this.despawnBullets();
-        let explosionSound = new Audio('./assets/sounds/explosionTanque.mp3')
+        let explosionSound = new Audio('assets/sounds/explosionTanque.mp3')
         explosionSound.play()
         tank.health--;
       
-        playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
+        playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
        
-        enemyStats.textContent = `Enemy: ${enemyTank.health}`;
+        enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
         
 
