@@ -23,9 +23,9 @@ class Bullet {
     newBullet.style.left = this.x + "px";
     this.parent.appendChild(newBullet);
     this.sprite = newBullet;
-    let shootSound = new Audio('./assets/sounds/disparoTanque2.flac')
-    shootSound.pause()
-    shootSound.play()
+    let shootSound = new Audio("./assets/sounds/disparoTanque2.flac");
+    shootSound.pause();
+    shootSound.play();
   }
 
   move() {
@@ -35,52 +35,46 @@ class Bullet {
   }
 
   despawnBullets() {
-   
-    
     clearInterval(this.timerId);
-    this.sprite.remove()
+    this.sprite.remove();
     this.bullets.splice(this.bullets.indexOf(this), 1);
-
   }
-
 
   checkCollision() {
     if (
       this.x >= this.parent.offsetWidth + this.width + 30 ||
       this.x <= 0 - 30
     ) {
-        this.despawnBullets(); 
-        return
-    }   
+      this.despawnBullets();
+      return;
+    }
 
-   
-    if(this.direction === -1){
-    console.log(this.direction)
-      if ( 
-        this.x > obstacle.x  &&
+    if (this.direction === -1) {
+      console.log(this.direction);
+      if (
+        this.x > obstacle.x &&
         this.x < obstacle.x + obstacle.width &&
         this.y < obstacle.y + obstacle.height &&
         this.y + this.height > obstacle.y
-      ){
-        console.log("maria 2");
-        this.despawnBullets()
-        return
+      ) {
+        console.log("enemy tank into  the wall");
+        this.despawnBullets();
+        return;
       }
-
     }
-    if(this.direction === 1){
-
-    if (
-      this.x > obstacle.x + obstacle.width &&
-      this.x + this.width < obstacle.x  &&
-      this.y < obstacle.y + obstacle.height &&
-      this.y + this.height > obstacle.y
-    ){
-
-      console.log("maria1");
-      this.despawnBullets()
-      return
-    }}
+    if (this.direction === 1) {
+      console.log( this.direction);
+      if (
+        this.x < obstacle.x + obstacle.width &&
+        this.x + this.width > obstacle.x &&
+        this.y < obstacle.y + obstacle.height &&
+        this.y + this.height > obstacle.y
+      ) {
+        console.log("maintank tank into  the wall");
+        this.despawnBullets();
+        return;
+      }
+    }
 
     this.target.forEach((tank) => {
       if (
@@ -90,15 +84,13 @@ class Bullet {
         this.y + this.height > tank.y
       ) {
         this.despawnBullets();
-        let explosionSound = new Audio('assets/sounds/explosionTanque.mp3')
-        explosionSound.play()
+        let explosionSound = new Audio("assets/sounds/explosionTanque.mp3");
+        explosionSound.play();
         tank.health--;
-      
-        playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
-       
-        enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
-        
+        playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
+
+        enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
         if (tank.health <= 0) {
           tank.despawnPlayer();
@@ -107,8 +99,6 @@ class Bullet {
 
         return true;
       }
-     
-      })
-    }
+    });
   }
-
+}
