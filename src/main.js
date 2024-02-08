@@ -25,9 +25,15 @@ window.addEventListener("keydown", (e) => {
       case "w":
         mainTank.direction = -1;
         break;
+        case "W":
+          mainTank.direction = -1;
+          break;
       case "s":
         mainTank.direction = 1;
         break;
+        case "S":
+          mainTank.direction = 1;
+          break;
       case " ":
         if (enemyTank.isDead === false) {
           let newBullet = new Bullet(
@@ -52,7 +58,7 @@ window.addEventListener("keydown", (e) => {
 
 window.addEventListener("keyup", (e) => {
   if (gameStarted) {
-    if (e.key === "w" || e.key === "s") {
+    if (e.key === "w" || e.key === "s" ||e.key === "W" || e.key === "S") {
       mainTank.direction = 0;
     }
   }
