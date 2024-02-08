@@ -186,7 +186,7 @@ body {
     visibility: hidden;
 }
 .obstacle{
-    background-image: url(/assets/images/projectile/murallaMetal2.jpg);
+    background-image: url('../assets/images/projectile/murallaMetal2.jpg');
      background-position: center;
      background-repeat: repeat;
      background-size: 50px 50px;
