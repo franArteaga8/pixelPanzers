@@ -90,8 +90,8 @@ function startGame() {
   music.loop = true
   startDiv.classList.add("hidden");
 
-  playerStats.textContent = `${playerName.value}: ${mainTank.health}`;
-  enemyStats.textContent = `Enemy: ${enemyTank.health}`;
+  playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
+  enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
 
   let timerId = setInterval(mainTankMovement, 24);
 
