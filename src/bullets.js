@@ -14,6 +14,7 @@ class Bullet {
     this.sprite;
     this.move = this.move.bind(this);
     this.timerId;
+    this.checkCollisionVar = false
   }
 
   spawnBullets() {
@@ -39,8 +40,21 @@ class Bullet {
     this.sprite.remove();
     this.bullets.splice(this.bullets.indexOf(this), 1);
   }
+  
+  damageTaken(tank){
+
+    if (!tank.classList.contains("damageTakenClass")){
+      tank.classList.add("damageTakenClass");
+    }
+    setTimeout(function(){
+      tank.classList.remove("damageTakenClass")
+    }, 400)
+}
+
+
 
   checkCollision() {
+
     if (
       this.x >= this.parent.offsetWidth + this.width + 30 ||
       this.x <= 0 - 30
@@ -77,6 +91,8 @@ class Bullet {
     }
 
     this.target.forEach((tank) => {
+      console.log(tank)
+
       if (
         this.x < tank.x + tank.width &&
         this.x + this.width > tank.x &&
@@ -87,7 +103,8 @@ class Bullet {
         let explosionSound = new Audio("assets/sounds/explosionTanque.mp3");
         explosionSound.play();
         tank.health--;
-
+        this.damageTaken(tank.sprite)
+      
         playerStats.textContent = `${playerName.value}.Lifes: [${mainTank.health}]`;
 
         enemyStats.textContent = `enemy.Lifes: [${enemyTank.health}]`;
