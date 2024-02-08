@@ -1,6 +1,7 @@
 # **PIXEL PANZERS** #
 
-![1](https://github.com/franArteaga8/protoTank_v1/assets/156690928/23ecb64a-bf4a-4ab9-9ab9-8835c7dea643)
+![pixelPanzers](https://github.com/franArteaga8/pixelPanzers/assets/156690928/e015b358-de22-4ffc-a3ff-4794f7efa4a2)
+
 
 ### CREATORS ###
 @Airamgg99
