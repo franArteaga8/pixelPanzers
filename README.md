@@ -11,7 +11,8 @@
 The game starts with one player vs the machine.
 The player must shoot the enemy tank and hit it three times to win the game. 
 
-![2](https://github.com/franArteaga8/protoTank_v1/assets/156690928/4d3bc1b8-5666-4d1d-8cba-cdcc62c825d4)
+![pixelPanzers1](https://github.com/franArteaga8/pixelPanzers/assets/156690928/0e4ba9e7-b2fa-4071-ae29-9f4d321e0c1a)
+
 
 
 
@@ -27,7 +28,8 @@ To control the shots:
 ### OPERATING: ###
 Once the page loads, a window appears to enter your name which should be maximum 5 characters. Once entered, you must press the START button to start the game. Once the game is finished, next to the game completion message indicating whether you are the winner or loser, a RESET button will be displayed in case you wish to return to the start screen and play again.
 
-![3](https://github.com/franArteaga8/protoTank_v1/assets/156690928/d7d2630c-0e1e-472c-a85d-060ecbdb914c)
+![winnerPanzer](https://github.com/franArteaga8/pixelPanzers/assets/156690928/7461564d-960a-4fe4-887f-fa53c2361854)
+
 
 
 
