@@ -11,7 +11,8 @@
 The game starts with one player vs the machine.
 The player must shoot the enemy tank and hit it three times to win the game. 
 
-![pixelPanzers1](https://github.com/franArteaga8/pixelPanzers/assets/156690928/0e4ba9e7-b2fa-4071-ae29-9f4d321e0c1a)
+![pixelPanzers1](https://github.com/franArteaga8/pixelPanzers/assets/156690928/b983a58c-9dd8-4451-90a1-1a2e0547c7da)
+
 
 
 
