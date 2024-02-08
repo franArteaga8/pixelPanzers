@@ -26,7 +26,8 @@ To control the shots:
 Once the page loads, a window appears to enter your name which should be maximum 5 characters. Once entered, you must press the START button to start the game. Once the game is finished, next to the game completion message indicating whether you are the winner or loser, a RESET button will be displayed in case you wish to return to the start screen and play again.
 
 
-![image](https://github.com/franArteaga8/protoTank_v1/assets/110979479/ae37f0f7-aae7-4ac8-91e2-03a9eeb41b54)
+![winnerPanzers](https://github.com/franArteaga8/protoTank_v1/assets/156690928/674d3f75-3408-482c-a6eb-2e3a417af4f1)
+
 
 
 
