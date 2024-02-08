@@ -31,8 +31,8 @@ window.addEventListener("keydown", (e) => {
       case " ":
         if (enemyTank.isDead === false) {
           let newBullet = new Bullet(
-            mainTank.x + mainTank.width / 2,
-            mainTank.y + mainTank.height / 2 - 7.5,
+            mainTank.x + mainTank.width / 2 + 50,
+            mainTank.y + mainTank.height / 2 + 10,
             canvas,
             enemies,
             obstacles,
@@ -104,8 +104,8 @@ function startGame() {
     enemyTank.direction = enemyTank.enemyDirRNG();
     if (enemyTank.direction === 0) {
       let newBullet = new Bullet(
-        enemyTank.x,
-        enemyTank.y + mainTank.height / 2 - 7.5,
+        enemyTank.x - 23,
+        enemyTank.y + mainTank.height / 2 + 7,
         canvas,
         friends,
         obstacles,
