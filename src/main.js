@@ -61,7 +61,8 @@ let mainTank = new Tank(
   canvasWidth / 10,
   (canvasHeight - 100) / 2,
   canvas,
-  "player"
+  "player",
+  "classTank"
 );
 
 mainTank.spawnPlayer();
@@ -71,7 +72,8 @@ let enemyTank = new Tank(
   canvasWidth - canvasWidth / 10 - 100,
   (canvasHeight - 100) / 2,
   canvas,
-  "enemy"
+  "enemy",
+  "classTank"
 );
 enemyTank.spawnPlayer();
 enemies.push(enemyTank);

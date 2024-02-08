@@ -64,7 +64,7 @@ body {
     background-color: rgb(255, 255, 255);
     position: absolute;
     border-radius:15px;
-   box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437); 
+    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.437); 
  
 }
 
@@ -185,3 +185,58 @@ body {
     visibility: hidden;
 }
 
+
+.damageTakenClass {
+    animation: damageTaken 400ms;
+    filter: saturate(200%);
+    filter: invert(75%);
+}
+
+@keyframes damageTaken {
+    0% {
+        opacity: 100%;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+   
+    70% {
+        opacity: 100%;
+    }
+
+
+    72% {
+        opacity: 0;
+    }
+
+    83% {
+        opacity: 0;
+    }
+
+    85% {
+        opacity: 100%;
+    }
+
+    87% {
+        opacity: 0;
+    }
+
+    97% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100;
+    }
+    
+}

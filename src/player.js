@@ -1,5 +1,5 @@
 class Tank {
-    constructor (x, y, parent, id) {
+    constructor (x, y, parent, id, claseTank) {
         this.width = 100
         this.height = 100
         this.x = x
@@ -9,6 +9,7 @@ class Tank {
         this.direction = 0
         this.sprite
         this.id = id
+        this.claseTank = claseTank
         this.isDead = false
         this.health = 3
         this.bullets = []
@@ -17,6 +18,7 @@ class Tank {
 
     spawnPlayer(){
         let newPlayer = document.createElement('div')
+        newPlayer.setAttribute('class', this.claseTank)
         newPlayer.setAttribute('id', this.id)
 
         newPlayer.style.left = this.x + 'px'
