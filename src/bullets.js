@@ -1,11 +1,11 @@
 class Bullet {
-  constructor(x, y, parent, target, obstacles, bullets, direction) {
+  constructor(x, y, parent, target, obstacle, bullets, direction) {
     this.x = x;
     this.y = y;
     this.parent = parent;
     this.friends = friends;
     this.target = target;
-    this.obstacles = obstacles;
+    this.obstacle = obstacle;
     this.bullets = bullets;
     this.speed = 45;
     this.direction = direction;
@@ -24,7 +24,7 @@ class Bullet {
     this.parent.appendChild(newBullet);
     this.sprite = newBullet;
     let shootSound = new Audio('./assets/sounds/disparoTanque2.flac')
-   shootSound.pause()
+    shootSound.pause()
     shootSound.play()
   }
 
@@ -44,13 +44,43 @@ class Bullet {
   }
 
 
-  checkCollision(target) {
+  checkCollision() {
     if (
       this.x >= this.parent.offsetWidth + this.width + 30 ||
       this.x <= 0 - 30
     ) {
         this.despawnBullets(); 
+        return
+    }   
+
+   
+    if(this.direction === -1){
+    console.log(this.direction)
+      if ( 
+        this.x > obstacle.x  &&
+        this.x < obstacle.x + obstacle.width &&
+        this.y < obstacle.y + obstacle.height &&
+        this.y + this.height > obstacle.y
+      ){
+        console.log("maria 2");
+        this.despawnBullets()
+        return
+      }
+
     }
+    if(this.direction === 1){
+
+    if (
+      this.x > obstacle.x + obstacle.width &&
+      this.x + this.width < obstacle.x  &&
+      this.y < obstacle.y + obstacle.height &&
+      this.y + this.height > obstacle.y
+    ){
+
+      console.log("maria1");
+      this.despawnBullets()
+      return
+    }}
 
     this.target.forEach((tank) => {
       if (
@@ -77,6 +107,8 @@ class Bullet {
 
         return true;
       }
-    });
+     
+      })
+    }
   }
-}
+

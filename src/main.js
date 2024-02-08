@@ -17,7 +17,7 @@ let bullets = [];
 let friends = [];
 let enemies = [];
 let obstacles = [];
-let gameStarted = false;
+let gameStarted = false
 
 window.addEventListener("keydown", (e) => {
   if (gameStarted) {
@@ -35,10 +35,11 @@ window.addEventListener("keydown", (e) => {
             mainTank.y + mainTank.height / 2 - 7.5,
             canvas,
             enemies,
-            obstacles,
+            obstacle,
             bullets,
             1
           );
+       
           newBullet.spawnBullets();
           bullets.push(newBullet);
           newBullet.timerId = setInterval(newBullet.move, 24);
@@ -102,19 +103,12 @@ function startGame() {
   obstacle.spawnObstacle();
   obstacles.push(obstacle);
 
-  /*  let timer Id = setInterval(mainTankMovement, 24); */
-
-  /* function mainTankMovement() {
-    mainTank.move();
-    gameOver();
-  } */
 
   let totalInter = setInterval(mainMove, 24);
   function mainMove() {
     mainTank.move();
     enemyTank.move();
     obstacle.move();
-
     gameOver();
   }
 
@@ -127,7 +121,7 @@ function startGame() {
         enemyTank.y + mainTank.height / 2 - 7.5,
         canvas,
         friends,
-        obstacles,
+        obstacle,
         bullets,
         -1
       );
@@ -137,23 +131,16 @@ function startGame() {
     }
   }, 450);
 
-  /*  function enemyTankMovement() {
-    enemyTank.move();
-    gameOver();
-  } */
-
-  /*  let enemyTimer Id = setInterval(enemyTankMovement, 24); */
 
   function gameOver() {
     
     if (mainTank.isDead === true || enemyTank.isDead === true) {
-      gameStarted = false;
+  
      
       clearInterval(totalInter);
-      /*  clearInterval(timer Id);
-      clearInterval(enemyTimer Id);*/
       clearInterval(intervalDir);
       music.pause();
+
       bullets.forEach((bullet) => clearInterval(bullet.timerId));
 
       const balas = [...document.getElementsByClassName("bullets")];
@@ -162,13 +149,14 @@ function startGame() {
       });
 
       bullets = [];
-      obstacle.despawnObstacle()
-
+     
+      
+   
       const obstArr = [...document.getElementsByClassName("obstacle")];
      
-      obstArr.forEach((obs) => {
+      obstArr.forEach((obst) => {
       
-        canvas.removeChild(obs);
+        obst.remove()
       });
       
       obstacles = [];
@@ -226,11 +214,6 @@ function resetGame() {
   );
   enemyTank.spawnPlayer();
   enemies.push(enemyTank);
-
-  obstacle = new Obstacle(canvasWidth / 2 - 10, canvasHeight / 2 - 30, canvas);
-
-  obstacle.spawnObstacle();
-  obstacles.push(obstacle);
 
   startDiv.classList.remove("hidden");
   resetDiv.classList.remove("resetDivVisibility");

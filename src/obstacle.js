@@ -19,7 +19,6 @@ class Obstacle{
     }
     move(){
         let nextY = this.y + this.speed * this.direction
-
         if(nextY >= 0 && nextY <= canvasHeight - this.height){
           this.y += this.speed * this.direction
           this.sprite.style.top = this.y + 'px'
