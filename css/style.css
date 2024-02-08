@@ -57,7 +57,9 @@ body {
 .bullets {
     width: 20px;
     height: 15px;
+
     background-image: url('../assets/images/projectile/metal_bullet.png');
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -128,7 +130,6 @@ body {
 .resetDivVisibility{
    
     visibility: visible;
-/* background-image: url('../assets/sounds/soundtrack.mp3'); */
   
 }
 #finalMessage{
@@ -184,4 +185,9 @@ body {
 .hidden {
     visibility: hidden;
 }
-
+.obstacle{
+    background-color: blue;
+    width: 20px;
+    height: 100px;
+    position: absolute;
+}
